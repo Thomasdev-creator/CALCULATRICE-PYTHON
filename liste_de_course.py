@@ -1,8 +1,26 @@
 #import de sys pour quitter le programme
 import sys
+#import du module os et json
+import os
+import json
+
+#On récupère le dossier actuel avec le chemin complet vers notre script grâce à file
+CUR_DIR = os.path.dirname(__file__)
+#On concatène le dossier parent avec le fichier liste.json
+LISTE_path = os.path.join(CUR_DIR, "liste.json")
+
+'''On vérifie l'existence de la liste sur le disque, puis si l'existe on lit son 
+contenue au format json, si il n'existe pas on l'initialise à une liste vide avec else'''
+
+if os.path.exists(LISTE_path):
+    with open(LISTE_path, "r") as f:
+        LISTE = json.load(f)
+
+else:
+    LISTE = []
 
 #Déclaration de la liste qui sera complété par l'utilisateur
-LISTE = []
+#LISTE = []
 
 #Déclaration du menu
 MENU = """Choisissez parmi les 5 options suivantes:
@@ -50,7 +68,10 @@ while True:
         print("Votre liste de course est vide")
 #Quitter
     elif user_choice == "5":
-        item = input("Quitter le programme")
+        #Avant de quitter le programme, on va écrire la liste sur le disque, on l'ouvre en mode écriture. On écrit des données à l'intérieur du fichier grâce à la méthode .dump
+        with open(LISTE_path, "w") as f:
+            json.dump(LISTE, f, indent=4)
+        print("A bientôt")
         sys.exit()
     
     print("-" * 50)
