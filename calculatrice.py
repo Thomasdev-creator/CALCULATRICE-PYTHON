@@ -1,4 +1,3 @@
-"""
 #nombre_a = int(input("Entrez un nombre: "))
 #nombre_b = int(input("Entrez un autre nombre: "))
 #resultat = (nombre_a + nombre_b)
@@ -21,4 +20,3 @@ while not(a.isdigit() and b.isdigit()):
 #On affiche le résultat de l'addition
 resultat = f"Le résultat de l'addition de {a} + {b} est égale à {int(a) + int(b)}"
 print(resultat)
-"""
