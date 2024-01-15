@@ -9,3 +9,4 @@ except UnicodeDecodeError:
     print("Le fichier est introuvable")
 else:
     f.close()
+
